@@ -1,0 +1,44 @@
+#include <bits/stdc++.h> 
+/****************************************************************
+    Following is the Linked List node structure
+
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+*****************************************************************/
+
+
+Node* kReverse(Node* head, int k) {
+    // Write your code here.
+
+    if (head == NULL){
+        return NULL;
+    }
+
+    Node* current = head;
+    Node* next = NULL;
+    Node* previous = NULL;
+
+    int count = 0;
+    // reverse the first 
+    while (current != NULL && count < k){
+        next = current -> next;
+        current -> next = previous;
+        previous = current;
+        current = next;
+        count++;
+    }
+    if (next != NULL){
+        head -> next = kReverse(next, k);
+    }
+    return previous;
+}

@@ -1,0 +1,62 @@
+[ Approch - 1 ]
+
+By traversing and replacing the node in linked list 
+/********************************
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+********************************/
+
+Node* sortList(Node *head)
+{
+    Node* zeroCount = 0;
+    Node* oneCount = 0;
+    Node* twoCount = 0;
+
+    Node* temp = head;
+
+    while (temp != NULL){
+
+        if (temp->data == 0){
+            zeroCount++;
+        }
+        else if (temp->data == 1){
+            oneCount++;
+        }
+        else if (temp ->data == 2){
+            twoCount++;
+        }
+        temp = temp -> next;
+    }
+    temp = head;
+
+    while (temp != NULL){
+        if (zeroCount != 0){
+            temp ->data = 0;
+            zeroCount--;
+        }
+        else if(oneCount != 0){
+            temp->data = 1;
+            oneCount--;
+        }
+        else if (twoCount != 0){
+            temp ->data = 2;
+            twoCount--;
+
+        }
+        temp = temp->next;
+    }
+    return head;
+
+    // Write your code here.
+
+}
